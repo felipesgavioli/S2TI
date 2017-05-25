@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>ngTable</id>
+    <version>3.0.1</version>
+    <title>ngTable</title>
+    <authors>Vitalii Savchuk</authors>
+    <owners>Vitalii Savchuk</owners>
+    <licenseUrl>http://creativecommons.org/licenses/BSD/</licenseUrl>
+    <projectUrl>https://github.com/esvit/ng-table</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Simple table with sorting and filtering on AngularJS</description>
+    <summary />
+    <releaseNotes>Visit https://github.com/esvit/ng-table/blob/master/CHANGELOG.md</releaseNotes>
+    <tags>ngTable</tags>
+  </metadata>
+</package>

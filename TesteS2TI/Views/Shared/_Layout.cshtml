@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <title>@ViewBag.Title - Teste S2TI</title>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/ng-table.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    
+    <script src="~/Scripts/bootstrap-notify.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/i18n/angular-locale_pt-br.js"></script>
+    <script src="~/Scripts/masks.js"></script>
+    <script src="~/App/App.js"></script>
+
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/ng-table.js"></script>
+    <script src="~/Scripts/ng-table.min.js"></script>
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+</head>
+<body>
+
+    <div class="flex-align">
+        <div class="container span7 col-md-8 col-md-offset-3" style="margin: 0 auto;float: none;">
+            <div class="row">
+                <div ng-app="S2App">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

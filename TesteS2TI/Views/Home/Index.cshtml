@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "S2TI";
+}
+
+<script src="~/App/controller/contaController.js"></script>
+
+
+<div ng-controller="ContaController" ng-init="Pesquisar()">
+    <h2 class="text-center"><label class="text-primary">Teste S2TI</label></h2>
+
+    @* Inicial valores para inclusão na conta/lista *@
+    <div class="form-horizontal">
+
+        <div class="funkyradio funkyradio-primary col-md-2">
+            <input type="radio" name="tipo" id="saque" ng-model="Conta.Tipo" checked value="0">
+            <label for="saque">SAQUE</label>
+        </div>
+
+        <div class="funkyradio funkyradio-primary col-md-2">
+            <input type="radio" name="tipo" id="deposito" ng-model="Conta.Tipo" value="1">
+            <label for="deposito">DEPÓSITO</label>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-3">
+                <input class="text-right form-control" required ui-number-mask="2" ui-hide-group-sep name="Valor" ng-model="Conta.Valor">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" ng-click="AdicionarItem(Conta)" class="btn btn-primary">Adicionar</button>
+            </div>
+        </div>
+    </div>
+
+    @* Tablea com valores da conta/lista *@
+    <table ng-table="tableParams" class="table table-striped table-hover table-bordered">
+        <tr ng-repeat="conta in $data">
+            <td class="text-left" sortable="'Tipo'" data-title="'Tipo'">{{retornoTipo(conta.Tipo)}}</td>
+            <td class="text-right" sortable="'Valor'" data-title="'Valor'">{{conta.Valor | currency:'R$ '}}</td>
+            <td data-title="'Ação'" class="text-center">
+                <a ng-href="#" data-animation="am-fade-and-scale" ng-click="ConfirmDelete($index)">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </a>
+            </td>
+        </tr>
+        <tr class="text-center" ng-show="Conta.length == 0">
+            <td colspan="3">
+                Nenhum registro encontrado.
+            </td>
+        </tr>
+
+    </table>
+
+    @* Saldo total em conta/lista *@
+    <div class="footer">
+        <h3>TOTAL EM CONTA: {{valorTotal | currency:'R$ '}}</h3>
+    </div>
+
+
+    @* Modals *@
+    <div class="modal fade" id="confirmaExcluir" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Excluir Depósito/Saque</h4>
+                </div>
+                <div class="modal-body">
+                    Deseja realmente excluir este Depósito/Saque?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" ng-click="RemoverItem()">Remover</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmaExcluir" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Excluir Depósito/Saque</h4>
+                </div>
+                <div class="modal-body">
+                    Deseja realmente excluir este Depósito/Saque?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" ng-click="RemoverItem()">Remover</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @* Alerts *@
+    <div id="validacaoZero" class="alert alert-warning col-md-5" style="display: none">
+        <a class="close" onclick="$('.alert').hide()">×</a>
+        <strong>Validação!</strong> Valor a para saque/depósito não pode ser igual a zero!
+    </div>
+
+    <div id="validacaoSaldo" class="alert alert-warning col-md-5" style=" display: none">
+        <a class="close" onclick="$('.alert').hide()">×</a>
+        <strong>Validação!</strong> Não há saldo suficiente para saque!
+    </div>
+
+</div>

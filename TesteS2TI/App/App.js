@@ -1,0 +1,1 @@
+﻿var app = angular.module('S2App', ['ngTable', 'ui.utils.masks']);
